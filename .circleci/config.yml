@@ -23,3 +23,5 @@ workflows:
       - cypress/run:
           name: run-component-tests
           cypress-command: npx cypress run --component
+          requires:
+            - start-server  # This ensures Cypress runs only after the server starts
