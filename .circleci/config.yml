@@ -24,4 +24,10 @@ workflows:
           name: run-component-tests
           cypress-command: npx cypress run --component
           requires:
-            - start-server  # This ensures Cypress runs only after the server starts
+            - start-server
+      - deploy-to-render-staging:
+          requires:
+            - run-component-tests
+          filters:
+            branches:
+              only: main
